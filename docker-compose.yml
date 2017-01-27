@@ -2,8 +2,8 @@ web:
     image: teanocrata/oscweb
     volumes:
       - ./secrets.ini:/home/node/OSCWeb/settings/secrets.ini
-    ports:
-      - "8000:8000"
+    expose:
+        - "8000"
     links:
         - logstash
     log_driver: gelf
@@ -30,3 +30,13 @@ kibana:
         - elasticsearch
     ports:
         - "5601:5601"
+
+lb:
+    image: tutum/haproxy
+    links:
+        - web
+    ports:
+        - "81:80"
+    environment:
+        - BACKEND_PORT=8000
+        - BALANCE=roundrobin

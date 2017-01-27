@@ -1,0 +1,32 @@
+sudo: required
+services:
+  - docker
+
+env:
+  COMPOSE_VERSION: 1.8.1
+
+before_install:
+ - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+ - chmod +x docker-compose
+ - sudo mv docker-compose /usr/local/bin
+
+script:
+  - docker-compose up -d
+  - docker-compose ps
+  - sleep 30s
+  - if [[ $(docker ps --format '{{.Names}}' | grep osc_lb_1) != 'osc_lb_1' ]]; then exit 1; fi
+  - if [[ $(docker ps --format '{{.Names}}' | grep osc_web_1) != 'osc_web_1' ]]; then exit 1; fi
+  - if [[ $(docker ps --format '{{.Names}}' | grep osc_elk_1) != 'osc_elk_1' ]]; then exit 1; fi
+  - sleep 30s
+  - docker-compose scale web=3
+  - if [[ $(docker ps --format '{{.Names}}' | grep osc_web_2) != 'osc_web_2' ]]; then exit 1; fi
+  - if [[ $(docker ps --format '{{.Names}}' | grep osc_web_3) != 'osc_web_3' ]]; then exit 1; fi
+
+
+notifications:
+  email: false
+  slack:
+    rooms:
+    - opensmartcountry:gjRfTD0YvySQZPrFw1gFfGmk
+    on_success: always
+    on_failure: always

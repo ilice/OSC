@@ -1,5 +1,5 @@
 web:
-  image: teanocrata/OSCWeb
+  image: teanocrata/oscweb
   volumes:
     - ./secrets.ini:/home/node/OSCWeb/settings/secrets.ini
   ports:

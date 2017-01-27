@@ -1,0 +1,6 @@
+web:
+  image: teanocrata/OSCWeb
+  volumes:
+    - ./secrets.ini:/home/node/OSCWeb/settings/secrets.ini
+  ports:
+    - "8000:8000"

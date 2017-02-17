@@ -32,7 +32,7 @@ services:
       - DJANGO_SETTINGS_MODULE=osc.settings.cpd.app_settings
     command: bash -c "python manage.py collectstatic --noinput && gunicorn osc_site.wsgi -b 0.0.0.0:8000"
     volumes:
-      - ./settings.ini:/usr/src/app/tmp/settings.ini
+      - ./secrets.ini:/usr/src/app/tmp/secrets.ini
     expose:
       - "8000"
     links:

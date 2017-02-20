@@ -7,6 +7,7 @@ services:
       - "443:443"
     container_name: nginx
     links:
+      - oscweb
       - oscapi
       - kibana
       - letsencrypt
@@ -39,7 +40,7 @@ services:
       - db
       - elastic
     container_name: oscapi
-  web:
+  oscweb:
     image: teanocrata/oscweb
     volumes:
       - ./secrets.ini:/home/node/OSCWeb/settings/secrets.ini
@@ -47,6 +48,10 @@ services:
         - "8000"
     links:
       - oscapi
+    logging:
+      driver: gelf
+      options:
+        gelf-address: udp://localhost:12201
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.2.0
     container_name: elastic
@@ -82,6 +87,12 @@ services:
       - 5601
     links:
       - elastic:elasticsearch
+  logstash:
+    image: docker.elastic.co/logstash/logstash:5.2.1
+    volumes:
+      - ./logstash/09-gelf-input.conf:/etc/logstash/conf.d/09-gelf-input.conf
+    ports:
+      - "12201:12201/udp"
   letsencrypt:
     image: quay.io/letsencrypt/letsencrypt:latest
     command:  bash -c "sleep 6 && certbot certonly --standalone -d opensmartcountry.com -d kibana.opensmartcountry.com -d elastic.opensmartcountry.com --text --agree-tos --email george@opsrobot.co.uk --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01"

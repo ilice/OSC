@@ -7,7 +7,7 @@ services:
       - "443:443"
     container_name: nginx
     links:
-      - web
+      - oscapi
       - kibana
       - letsencrypt
       - elastic
@@ -26,7 +26,7 @@ services:
       - "5432"
     volumes:
       - postgres-db-volume:/usr/share/postgres/data
-  web:
+  oscapi:
     image: teanocrata/oscapi
     environment:
       - DJANGO_SETTINGS_MODULE=osc.settings.cpd.app_settings
@@ -38,7 +38,15 @@ services:
     links:
       - db
       - elastic
-    container_name: web
+    container_name: oscapi
+  web:
+    image: teanocrata/oscweb
+    volumes:
+      - ./secrets.ini:/home/node/OSCWeb/settings/secrets.ini
+    expose:
+        - "8000"
+    links:
+      - oscapi
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.2.0
     container_name: elastic

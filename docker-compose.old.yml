@@ -10,7 +10,6 @@ services:
       - oscweb
       - oscapi
       - kibana
-      - letsencrypt
       - elastic
     environment:
       - OPENSMARTCOUNTRY_DOMAIN=opensmartcountry.com

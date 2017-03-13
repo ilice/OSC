@@ -2,10 +2,10 @@
 
 title: "OSC code camp"
 description: "Learn to code and help Open Smart Country"
-logo: # 120x120 px default image used for Twitter summary card
-teaser: # 400x250 px default teaser image used in image archive grid
-locale: en
-url: https://ilice.github.io/OSC/
+logo: 120x120.gif
+teaser: 400x250.gif
+locale: en_US
+url: "https://ilice.github.io/OSC"
 feed:
   path: atom.xml
 
@@ -26,14 +26,15 @@ gems:
 
 # Site owner
 owner:
-  name:
-  email:
-  twitter:
+  name: "Isabel Muñoz"
+  web: "https://teanocrata.github.io/"
+  twitter: "teanocrata"
+  bio: 
+  avatar: "bio-photo.jpg" # 160x160 px image for author byline
   google:
+    plus:
     ad-client:
     ad-slot:
-  bio:
-  avatar: bio-photo.jpg # 160x160 px image for author byline
   disqus-shortname:
 
 

@@ -12,9 +12,9 @@ services:
       - kibana
       - elastic
     environment:
-      - OPENSMARTCOUNTRY_DOMAIN=opensmartcountry.com
-      - KIBANA_OPENSMARTCOUNTRY_DOMAIN=kibana.opensmartcountry.com
-      - ELASTIC_OPENSMARTCOUNTRY_DOMAIN=elastic.opensmartcountry.com
+      - OPENSMARTCOUNTRY_DOMAIN=opensmartcountry.es
+      - KIBANA_OPENSMARTCOUNTRY_DOMAIN=kibana.opensmartcountry.es
+      - ELASTIC_OPENSMARTCOUNTRY_DOMAIN=elastic.opensmartcountry.es
     volumes:
       - ./.htpasswd:/etc/nginx/conf.d/.htpasswd
     volumes_from:

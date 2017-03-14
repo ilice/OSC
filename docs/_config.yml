@@ -5,7 +5,7 @@ description: "Learn to code and help Open Smart Country"
 logo: 120x120.gif
 teaser: 400x250.gif
 locale: en_US
-url: "https://ilice.github.io/OSC"
+url: http://localhost:4000 #"https://ilice.github.io/OSC"
 feed:
   path: atom.xml
 
@@ -27,9 +27,10 @@ gems:
 # Site owner
 owner:
   name: "Isabel Muñoz"
+  email: teanocrata@gmail.com
   web: "https://teanocrata.github.io/"
   twitter: "teanocrata"
-  bio: 
+  bio:
   avatar: "bio-photo.jpg" # 160x160 px image for author byline
   google:
     plus:
@@ -37,6 +38,7 @@ owner:
     ad-slot:
   disqus-shortname:
 
+repository: ilice/OSC
 
 include:
   - .htaccess

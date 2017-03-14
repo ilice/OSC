@@ -5,6 +5,7 @@
 .tile {
   @include outer-container;
   margin-bottom: $gutter;
+  text-align: center;
   @include media($micro) {
     @include fill-parent;
   }
@@ -41,5 +42,8 @@
         background: rgba($base-color,0.2);
       }
     }
+  }
+  img {
+    max-width: 60%;
   }
 }

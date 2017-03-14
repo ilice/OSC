@@ -117,3 +117,6 @@ Now you're ready to know Open Smart Country!
 </div>
 
 ---
+
+Based on [freeCodeCamp Getting Started](https://www.freecodecamp.com), an open source community that helps you learn to code. We highly recommend you visit their project.
+{: .notice}

@@ -79,16 +79,41 @@ You can also download the chat room app to your computer or phone.
 </div>
 
 You're king of the world! Let's go to your next challenge.
+
 ---
 
-## Configure your profile
+## Join a Open Smart Country Group in Your City
 
-Pending...
+You can code together with other campers in your city by joining a local OSC Code Camp group.
+
+| City Based Local Groups |
+|:--------|
+| [OSC Code Camp Meetup Madrid]({{ site.url }}/events)   |
+
+Find your city on this list and click it. This will take you to its events calendar.
+
+Your powers combined! Let's go to your next challenge!
 
 ---
 
 ## Learn What to Do If You Get Stuck
 
-Pending...
+Coding is hard. You will get stuck. Even experienced coders get stuck. The key is knowing how to get unstuck.
+
+It takes time to get good at coding. You wouldn't expect to beat a chess master after playing for 3 months. Don't expect to build the next Facebook after coding for 3 months.
+
+Keep practicing coding every day and hanging out with other people who code, and you will become a job-ready coder.
+
+Any time you get stuck or don't know what to do next: Read-Search-Ask.
+
+1. First, read the documentation or error message. A key skill that good coders have is the ability to interpret and then follow instructions.
+1. If that didn't help, search Google. Good Google queries take a lot of practice. When you search Google, you usually want to include the language or framework you're using. You also want to limit the results to a recent period.
+1. If that didn't help, ask your friends. If you have trouble, you can ask your fellow campers in our chat room.
+
+Now you're ready to know Open Smart Country!
+
+<div>
+  <a href="https://opensmartcountry.com" class="btn-success">Go to Open Smart Country</a>
+</div>
 
 ---

@@ -11,6 +11,7 @@ services:
       - oscapi
       - kibana
       - elastic
+      - letsencrypt
       - jupyter
     environment:
       - OPENSMARTCOUNTRY_DOMAIN=opensmartcountry.com
@@ -98,6 +99,7 @@ services:
       - TERM=xterm
   jupyter:
     image: jupyter/datascience-notebook
+    command: start-notebook.sh --NotebookApp.password=$PASSWORD
     environment:
       - PASSWORD=${PASSWORD}
 

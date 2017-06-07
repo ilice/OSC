@@ -102,6 +102,8 @@ services:
     command: start-notebook.sh --NotebookApp.password=$PASSWORD
     environment:
       - PASSWORD=${PASSWORD}
+    links:
+      - elastic
 
 volumes:
   postgres-db-volume:

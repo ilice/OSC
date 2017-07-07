@@ -99,11 +99,13 @@ services:
       - TERM=xterm
   jupyter:
     image: jupyter/datascience-notebook
-    command: start-notebook.sh --NotebookApp.password=$PASSWORD
-    environment:
-      - PASSWORD=${PASSWORD}
+    command: start-notebook.sh
     links:
       - elastic
+    volumes:
+      - ./jupyter_notebook_config.py:/etc/jupyter/jupyter_notebook_config.py
+      - ./jupyter_notebook_config.json:/etc/jupyter/jupyter_notebook_config.json
+      - jupyter-work:/home/jovyan
 
 volumes:
   postgres-db-volume:
@@ -111,4 +113,6 @@ volumes:
   es-data:
     external: true
   esbackup:
+    external: true
+  jupyter-work:
     external: true

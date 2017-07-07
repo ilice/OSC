@@ -14,6 +14,7 @@ services:
       - letsencrypt
       - jupyter
     environment:
+      - ALLOWED_IP=${ALLOWED_IP}
       - OPENSMARTCOUNTRY_DOMAIN=opensmartcountry.com
       - KIBANA_OPENSMARTCOUNTRY_DOMAIN=kibana.opensmartcountry.com
       - ELASTIC_OPENSMARTCOUNTRY_DOMAIN=elastic.opensmartcountry.com

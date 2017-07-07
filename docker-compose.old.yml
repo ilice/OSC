@@ -74,7 +74,7 @@ services:
       - IPC_LOCK
     volumes:
       - es-data:/usr/share/elasticsearch/data
-      - esbackup:/usr/share/elasticsearch/backups
+      - es-backup-201707:/usr/share/elasticsearch/backups
     expose:
       - 9300
   kibana:

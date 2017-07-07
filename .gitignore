@@ -2,3 +2,4 @@ secrets.ini
 .htpasswd
 operation_log.txt
 jupyter_notebook_config.json
+*.log

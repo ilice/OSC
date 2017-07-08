@@ -51,6 +51,12 @@ services:
         - "8000"
     links:
       - oscapi
+  elasticbackup:
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.2.0
+      container_name: elasticbackup
+      volumes:
+        - es-backup-201707:/usr/share/elasticsearch/backups
+      command: chown elasticsearch:elasticsearch /usr/share/elasticsearch/backups
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.2.0
     container_name: elastic
@@ -74,7 +80,8 @@ services:
       - IPC_LOCK
     volumes:
       - es-data:/usr/share/elasticsearch/data
-      - es-backup-201707:/usr/share/elasticsearch/backups
+    volumes_from:
+      - elasticbackup
     expose:
       - 9300
   kibana:

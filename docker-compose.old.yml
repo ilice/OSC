@@ -51,14 +51,8 @@ services:
         - "8000"
     links:
       - oscapi
-  elasticbackup:
-      image: docker.elastic.co/elasticsearch/elasticsearch:5.2.0
-      container_name: elasticbackup
-      volumes:
-        - es-backup-201707:/usr/share/elasticsearch/backups
-      command: chown elasticsearch:elasticsearch /usr/share/elasticsearch/backups
   elastic:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.2.0
+    image: teanocrata/oscelastic
     container_name: elastic
     environment:
       - cluster.name=osc-cluster
@@ -80,8 +74,7 @@ services:
       - IPC_LOCK
     volumes:
       - es-data:/usr/share/elasticsearch/data
-    volumes_from:
-      - elasticbackup
+      - es-backup-201707:/usr/share/elasticsearch/backups
     expose:
       - 9300
   kibana:
@@ -123,4 +116,4 @@ volumes:
   jupyter-work:
     external: true
   es-backup-201707:
-    external: false
+    external: true

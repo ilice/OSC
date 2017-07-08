@@ -120,8 +120,6 @@ volumes:
     external: true
   es-data:
     external: true
-  esbackup:
-    external: true
   jupyter-work:
     external: true
   es-backup-201707:

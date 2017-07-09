@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: teanocrata/osclb
+    image: teanocrata/osclb:0.2.0
     ports:
       - "80:80"
       - "443:443"
@@ -31,7 +31,7 @@ services:
     volumes:
       - postgres-db-volume:/usr/share/postgres/data
   oscapi:
-    image: teanocrata/oscapi
+    image: teanocrata/oscapi:0.5.0
     environment:
       - DJANGO_SETTINGS_MODULE=osc.settings.cpd.app_settings
     command: bash -c "python manage.py collectstatic --noinput && gunicorn osc_site.wsgi -b 0.0.0.0:8000"
@@ -44,7 +44,7 @@ services:
       - elastic
     container_name: oscapi
   oscweb:
-    image: teanocrata/oscweb
+    image: teanocrata/oscweb:0.3.0
     volumes:
       - ./secrets.ini:/home/node/OSCWeb/settings/secrets.ini
     expose:
@@ -52,7 +52,7 @@ services:
     links:
       - oscapi
   elastic:
-    image: teanocrata/oscelastic
+    image: teanocrata/oscelastic:0.1.0
     container_name: elastic
     environment:
       - cluster.name=osc-cluster

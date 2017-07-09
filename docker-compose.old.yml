@@ -11,7 +11,6 @@ services:
       - oscapi
       - kibana
       - elastic
-      - letsencrypt
       - jupyter
     environment:
       - ALLOWED_IP=${ALLOWED_IP}
@@ -31,7 +30,7 @@ services:
     volumes:
       - postgres-db-volume:/usr/share/postgres/data
   oscapi:
-    image: teanocrata/oscapi:0.5.0
+    image: teanocrata/oscapi
     environment:
       - DJANGO_SETTINGS_MODULE=osc.settings.cpd.app_settings
     command: bash -c "python manage.py collectstatic --noinput && gunicorn osc_site.wsgi -b 0.0.0.0:8000"

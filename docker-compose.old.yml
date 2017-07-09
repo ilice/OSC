@@ -25,10 +25,12 @@ services:
   db:
     image: postgres:9.6.3
     container_name: db
+    environment:
+      - PGDATA=/var/lib/postgresql/data
     expose:
       - "5432"
     volumes:
-      - postgres-db-volume:/usr/share/postgres/data
+      - postgres-db-volume:/var/lib/postgresql/data
   oscapi:
     image: teanocrata/oscapi
     environment:

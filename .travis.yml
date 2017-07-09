@@ -11,16 +11,28 @@ before_install:
  - sudo mv docker-compose /usr/local/bin
 
 script:
+  - docker volume create --name=postgres-db-volume
+  - docker volume create --name=es-data
+  - docker volume create --name=jupyter-work
+  - docker volume create --name=es-backup-201707
   - docker-compose up -d
   - docker-compose ps
   - sleep 30s
-  - if [[ $(docker ps --format '{{.Names}}' | grep osc_lb_1) != 'osc_lb_1' ]]; then exit 1; fi
-  - if [[ $(docker ps --format '{{.Names}}' | grep osc_web_1) != 'osc_web_1' ]]; then exit 1; fi
-  - if [[ $(docker ps --format '{{.Names}}' | grep osc_elk_1) != 'osc_elk_1' ]]; then exit 1; fi
+  - if [[ $(docker ps --format '{{.Names}}' | grep db) != 'db' ]]; then exit 1; fi
   - sleep 30s
-  - docker-compose scale web=3
-  - if [[ $(docker ps --format '{{.Names}}' | grep osc_web_2) != 'osc_web_2' ]]; then exit 1; fi
-  - if [[ $(docker ps --format '{{.Names}}' | grep osc_web_3) != 'osc_web_3' ]]; then exit 1; fi
+  - if [[ $(docker ps --format '{{.Names}}' | grep elastic) != 'elastic' ]]; then exit 1; fi
+  - sleep 30s
+  - if [[ $(docker ps --format '{{.Names}}' | grep oscapi) != 'oscapi' ]]; then exit 1; fi
+  - sleep 30s
+  - if [[ $(docker ps --format '{{.Names}}' | grep oscweb) != 'oscweb' ]]; then exit 1; fi
+  - if [[ $(docker ps --format '{{.Names}}' | grep kibana) != 'kibana' ]]; then exit 1; fi
+  - sleep 30s
+  - if [[ $(docker ps --format '{{.Names}}' | grep letsencrytp) != 'letsencrytp' ]]; then exit 1; fi
+  - if [[ $(docker ps --format '{{.Names}}' | grep nginx) != 'nginx' ]]; then exit 1; fi
+  - sleep 30s
+  - docker-compose scale oscweb=3
+  - if [[ $(docker ps --format '{{.Names}}' | grep osc_web_2) != 'osc_oscweb_2' ]]; then exit 1; fi
+  - if [[ $(docker ps --format '{{.Names}}' | grep osc_web_3) != 'osc_oscweb_3' ]]; then exit 1; fi
 
 
 notifications:

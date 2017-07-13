@@ -12,6 +12,7 @@ services:
       - kibana
       - elastic
       - jupyter
+      - letsencrypt
     environment:
       - ALLOWED_IP=${ALLOWED_IP}
       - OPENSMARTCOUNTRY_DOMAIN=opensmartcountry.com

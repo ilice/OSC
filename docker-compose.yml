@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: teanocrata/osclb:0.2.0
+    image: teanocrata/osclb
     ports:
       - "80:80"
       - "443:443"

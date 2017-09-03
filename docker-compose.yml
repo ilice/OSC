@@ -47,7 +47,7 @@ services:
       - elastic
     container_name: oscapi
   oscweb:
-    image: teanocrata/oscweb:0.3.0
+    image: teanocrata/oscweb
     volumes:
       - ./secrets.ini:/home/node/OSCWeb/settings/secrets.ini
     expose:

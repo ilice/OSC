@@ -34,7 +34,7 @@ services:
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
   oscapi:
-    image: teanocrata/oscapi
+    image: teanocrata/oscapi:0.6.0
     environment:
       - DJANGO_SETTINGS_MODULE=osc.settings.cpd.app_settings
     command: bash -c "python manage.py collectstatic --noinput && gunicorn osc_site.wsgi -b 0.0.0.0:8000"
@@ -47,7 +47,7 @@ services:
       - elastic
     container_name: oscapi
   oscweb:
-    image: teanocrata/oscweb
+    image: teanocrata/oscweb:0.4.0
     volumes:
       - ./secrets.ini:/home/node/OSCWeb/settings/secrets.ini
     expose:

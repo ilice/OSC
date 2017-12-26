@@ -15,6 +15,7 @@ script:
   - docker volume create --name=es-data
   - docker volume create --name=jupyter-work
   - docker volume create --name=es-backup-201707
+  - docker network create ILICEReverseProxy
   - docker-compose pull
   - docker-compose up -d
   - sleep 10s

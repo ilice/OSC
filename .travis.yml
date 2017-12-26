@@ -32,9 +32,6 @@ after_success:
   - if [[ $(docker ps --format '{{.Names}}' | grep kibana) != 'kibana' ]]; then exit 1; fi
   - if [[ $(docker ps --format '{{.Names}}' | grep jupyter) != 'jupyter' ]]; then exit 1; fi
   - sleep 30s
-  - if [[ $(docker ps --format '{{.Names}}' | grep letsencrytp) != 'letsencrytp' ]]; then exit 1; fi
-  - if [[ $(docker ps --format '{{.Names}}' | grep nginx) != 'nginx' ]]; then exit 1; fi
-  - sleep 30s
   - docker-compose run oscapi python manage.py migrate
   - docker-compose scale oscweb=3
   - if [[ $(docker ps --format '{{.Names}}' | grep osc_web_2) != 'osc_oscweb_2' ]]; then exit 1; fi
